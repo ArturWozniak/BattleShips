@@ -31,6 +31,7 @@ class Field {
     }
 
     void sunkShip(){
+        shipOnField.decrementDecks();
         this.shipOnField = null;
     }
 

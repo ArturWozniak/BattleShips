@@ -31,5 +31,8 @@ public class Main {
         }
         board.printBoard();
         */
+       do {
+           player1.guessShip();
+       } while(true);
     }
 }
