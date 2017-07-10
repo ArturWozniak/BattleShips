@@ -1,14 +1,19 @@
 package ships.war;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 /**
  * Created by AW on 2017-07-09.
  */
 public class Board {
     private final int SIZE = 10;
     private Field[][] board;
+    private HashSet<Ship> shipsOnBoard;
 
     Board() {
         board = new Field[SIZE][SIZE];
+        shipsOnBoard = new HashSet<>();
         initializeBoard();
         printBoard();
     }
@@ -115,11 +120,13 @@ public class Board {
             if (orient == Orientation.HOR) {
                 setField(x,y,State.SHIP,ship);
                 ship.addOccupied(board[x][y]);
+                shipsOnBoard.add(ship);
                 y += 1;
             }
             else {
                 setField(x,y,State.SHIP,ship);
                 ship.addOccupied(board[x][y]);
+                shipsOnBoard.add(ship);
                 x += 1;
             }
         }
@@ -155,5 +162,12 @@ public class Board {
             catch (Exception ex) {//nothing bad happened}
             }
         }
+    }
+    public boolean checkIfBoardIsEmpty(){
+       return shipsOnBoard.isEmpty();
+    }
+
+    public HashSet<Ship> getShipsOnBoard() {
+        return shipsOnBoard;
     }
 }
