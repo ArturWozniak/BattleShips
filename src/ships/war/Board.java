@@ -42,14 +42,20 @@ public class Board {
                 System.out.print(' ');
             }
         }
+        System.out.println("");
     }
 
-    public Field getField(int x, int y) {
-        return board[x][y];
+    public Field getField(int x, int y){
+        try {
+            return board[x][y];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            return null;
+        }
     }
 
-    public void setField(int x, int y, State state) {
-        board[x][y] = new Field(x, y, state);
+    private void setField(int x, int y, State state,Ship ship) {
+        board[x][y] = new Field(x, y, state,ship);
     }
 
     private boolean isEmptySurrounding(int x, int y) throws CantPlaceShipException {
@@ -107,13 +113,20 @@ public class Board {
         y = ship.getyCord();
         for (iterator = 0; iterator < noDecks; iterator++) {
             if (orient == Orientation.HOR) {
-                setField(x,y,State.SHIP);
+                setField(x,y,State.SHIP,ship);
                 y += 1;
             }
             else {
-                setField(x,y,State.SHIP);
+                setField(x,y,State.SHIP,ship);
                 x += 1;
             }
         }
+    }
+    public void sunkElement(int x, int y){
+        board[x][y].sunkShip();
+    }
+
+    public void surroundDestroyedShipWithHITS(Ship ship){
+
     }
 }

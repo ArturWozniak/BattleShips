@@ -5,6 +5,9 @@ package ships.war;
  */
 public class Main {
     public static void main(String[] args) {
+        Player player1 = new Player("Artur");
+        player1.fillBoard();
+       /*
         Board board = new Board();
         try {
             board.placeShip(new OneDeckedShip(5,5));
@@ -27,7 +30,6 @@ public class Main {
             System.out.printf("\nYou cant place it there!\n");
         }
         board.printBoard();
-
-
+        */
     }
 }

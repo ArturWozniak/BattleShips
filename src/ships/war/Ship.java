@@ -11,26 +11,38 @@ public abstract class Ship {
     private int decksNo;
     private boolean isSunk;
     private Orientation orientation;
+    private Field[] occupied;
 
-    Ship(int x, int y, int number, Orientation orientation) {
+    Ship(int x, int y, int numberOfDecks, Orientation orientation) {
         xCord = x;
         yCord = y;
-        this.decksNo = number;
+        this.decksNo = numberOfDecks;
         this.orientation = orientation;
+        this.occupied = new Field[numberOfDecks];
     }
 
-    public int getxCord() {
+    int getxCord() {
         return xCord;
     }
 
-    public int getyCord() {
+    int getyCord() {
         return yCord;
     }
 
-    public Orientation getOrientation(){
+    Orientation getOrientation(){
         return orientation;
     }
-    public  int getDecks(){
+
+    int getDecks(){
         return decksNo;
+    }
+    public void decrementDecks(){
+        decksNo--;
+        if(decksNo == 0){
+            System.out.println("You've destroyed this ship!");
+        }
+    }
+    public void setOccupied(Field[] occupied){
+        this.occupied = occupied;
     }
 }
