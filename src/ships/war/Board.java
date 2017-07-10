@@ -114,19 +114,46 @@ public class Board {
         for (iterator = 0; iterator < noDecks; iterator++) {
             if (orient == Orientation.HOR) {
                 setField(x,y,State.SHIP,ship);
+                ship.addOccupied(board[x][y]);
                 y += 1;
             }
             else {
                 setField(x,y,State.SHIP,ship);
+                ship.addOccupied(board[x][y]);
                 x += 1;
             }
         }
     }
-    public void sunkElement(int x, int y){
-        board[x][y].sunkShip();
-    }
 
     public void surroundDestroyedShipWithHITS(Ship ship){
-
+        for (Field field: ship.getOccupied()
+             ) {
+            int x = field.getxCord();
+            int y = field.getyCord();
+            try {board[x+1][y-1].setState(State.HIT);}
+            catch (Exception ex) {//nothing bad happened}
+            }
+            try {board[x+1][y].setState(State.HIT);}
+            catch (Exception ex) {//nothing bad happened}
+            }
+            try {board[x+1][y+1].setState(State.HIT);}
+            catch (Exception ex) {//nothing bad happened}
+            }
+            try {board[x][y-1].setState(State.HIT);}
+            catch (Exception ex) {//nothing bad happened}
+            }
+            try {board[x][y+1].setState(State.HIT);}
+            catch (Exception ex) {//nothing bad happened}
+            }
+            try {board[x-1][y-1].setState(State.HIT);}
+            catch (Exception ex) {//nothing bad happened}
+            }
+            try {board[x-1][y].setState(State.HIT);}
+            catch (Exception ex) {//nothing bad happened}
+            }
+            try {board[x-1][y+1].setState(State.HIT);}
+            catch (Exception ex) {//nothing bad happened}
+            }
+        }
     }
 }

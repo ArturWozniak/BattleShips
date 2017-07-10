@@ -31,6 +31,7 @@ class Field {
     }
 
     void sunkShip(){
+        if (shipOnField != null)
         shipOnField.decrementDecks();
         this.shipOnField = null;
     }
@@ -48,5 +49,13 @@ class Field {
             default:
                 return 'O';
         }
+    }
+
+    public int getxCord() {
+        return xCord;
+    }
+
+    public int getyCord() {
+        return yCord;
     }
 }
